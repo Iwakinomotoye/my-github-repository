@@ -110,6 +110,9 @@ fetchData().then((data) => {
     } else if (timeAgo < (1/24) && timeAgo > (1/(60 * 24))) {
       timeAgo = parseInt(timeAgo * 24 * 60);
       timeAgo = "Updated " + timeAgo + " minutes ago";
+    } else if (timeAgo < (1/(60 * 24)) && timeAgo > (1/(60 * 60 * 24))) {
+      timeAgo = parseInt(timeAgo * 24 * 60 * 60);
+      timeAgo = "Updated " + timeAgo + " seconds ago";
     } else {
       timeAgo = "Updated " + parseInt(timeAgo) + " days ago"
     }
