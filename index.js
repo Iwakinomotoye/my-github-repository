@@ -41,7 +41,7 @@ const query = `{
   }
 }`;
   
-const token = "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";
+const token = "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";
 const fetchData = () => {
     return new Promise((resolve, reject) => {
         const options = {
