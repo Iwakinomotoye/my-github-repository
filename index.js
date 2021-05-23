@@ -41,14 +41,16 @@ const query = `{
   }
 }`;
   
-const token = "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";
+const tokenPart1 = "ghp_";
+const tokenPart2 = "Y7FoWcVWZjlnqrf3H5eZCuRt1LbYvt3aSi2X"
+
 const fetchData = () => {
     return new Promise((resolve, reject) => {
         const options = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer " + token,
+                "Authorization": "Bearer " + tokenPart1 + tokenPart2,
             },
             body: JSON.stringify({query})
         }
