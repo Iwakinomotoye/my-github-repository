@@ -92,9 +92,10 @@ fetchData().then((data) => {
       licenseInfo } = repository;
     const currentDate = new Date();
     let timeAgo = (currentDate.getTime()) - (new Date(pushedAt).getTime());
-    timeAgo = parseInt(timeAgo/ (60 * 60 * 24 * 1000));
-
+    timeAgo = timeAgo/ (60 * 60 * 24 * 1000);
+    
     if (timeAgo > 30) {
+      timeAgo = parseInt(timeAgo);
       months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       thePushedAt = new Date(pushedAt);
       month = months[thePushedAt.getMonth()];
@@ -106,8 +107,14 @@ fetchData().then((data) => {
       if(year !== currentYear) {
         timeAgo = "Updated " + month + " " + day + ", " + year;
       }
+    } else if (timeAgo < 1 && timeAgo > (1/24)) {
+      timeAgo = parseInt(timeAgo * 24);
+      timeAgo = "Updated " + timeAgo + " hours ago";
+    } else if (timeAgo < (1/24) && timeAgo > (1/(60 * 24))) {
+      timeAgo = parseInt(timeAgo * 24 * 60);
+      timeAgo = "Updated " + timeAgo + " minutes ago";
     } else {
-      timeAgo = "Updated " + timeAgo + " days ago"
+      timeAgo = "Updated " + parseInt(timeAgo) + " days ago"
     }
 
     const LI = document.createElement('li');
