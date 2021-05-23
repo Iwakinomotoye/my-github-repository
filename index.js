@@ -1,9 +1,6 @@
 // code to fetch profile information and render it to the dom
 let userData = null;
 
-// hide body till data is ready
-document.querySelector(".body").classList.add("hide");
-
 const query = `{
   user(login: "iwakinomotoye") {
     login
@@ -209,7 +206,4 @@ fetchData().then((data) => {
   observer.observe(target);
 
   document.querySelector(".copyright").innerHTML = "&copy; "+ currentYear +" GitHub, Inc.";
-
-  // show entire body at the same time
-  document.querySelector(".body").classList.remove("hide");
 })
